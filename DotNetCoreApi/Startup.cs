@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using DotNetCoreApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DotNetCoreApi
 {
@@ -24,6 +26,8 @@ namespace DotNetCoreApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            var connection = $"Data Source=IDEAPAD\\SQLEXPRESS;Initial Catalog=netcoreapi;Persist Security Info=True;User ID=sa;Password=123";
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
