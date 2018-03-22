@@ -26,8 +26,7 @@ namespace DotNetCoreApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            var connection = $"Data Source=IDEAPAD\\SQLEXPRESS;Initial Catalog=netcoreapi;Persist Security Info=True;User ID=sa;Password=123";
-            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<DatabaseContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ApiDatabase")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
