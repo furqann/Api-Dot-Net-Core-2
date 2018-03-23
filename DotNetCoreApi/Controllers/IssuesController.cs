@@ -8,14 +8,14 @@ using DotNetCoreApi.Models;
 namespace DotNetCoreApi.Controllers
 {
     [Route("api/[controller]")]
-    public class ValuesController : Controller
+    public class IssuesController : Controller
     {
         private readonly DatabaseContext _context;
-        public ValuesController(DatabaseContext context)
+        public IssuesController(DatabaseContext context)
         {
             _context = context;
         }
-        // GET api/values
+        // GET api/issues
         [HttpGet]
         public IEnumerable<Issue> Get()
         {
@@ -23,11 +23,11 @@ namespace DotNetCoreApi.Controllers
             return  issues;
         }
 
-        // GET api/values/5
+        // GET api/issues/5
         [HttpGet("{id}",Name = "GetIssue")]
         public IActionResult Get(int id)
         {
-            var issue = _context.Issues.SingleOrDefault(i => i.Id == id);
+            var issue = _context.Issues.FirstOrDefault(i => i.Id == id);
             if (issue == null)
                 return NotFound();
 
@@ -35,7 +35,7 @@ namespace DotNetCoreApi.Controllers
             return new ObjectResult(issue);
         }
 
-        // POST api/values
+        // POST api/issues
         [HttpPost]
         public IActionResult Post([FromBody]Issue issue)
         {
@@ -50,7 +50,7 @@ namespace DotNetCoreApi.Controllers
             return CreatedAtRoute("GetIssue",new { id = issue.Id },issue);
         }
 
-        // PUT api/values/5
+        // PUT api/issues/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]Issue issue)
         {
@@ -67,7 +67,7 @@ namespace DotNetCoreApi.Controllers
             return new NoContentResult();
         }
 
-        // DELETE api/values/5
+        // DELETE api/issues/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
