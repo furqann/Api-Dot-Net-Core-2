@@ -1,5 +1,5 @@
 # Guiding Material
-- You need Visual Studio 2017. (2019 not tested)
+- You use Visual Studio 2017/19.
 - Install .Net SDK for DotNetCore 2.
 => [Getting Started with DotNet](https://www.microsoft.com/net/learn/get-started/windows)
 - To make this project work I'm following tutorial [DotNet Core Tutorial](https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-web-api)
